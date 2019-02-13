@@ -3,7 +3,8 @@ import numpy as np
 
 nodeList = []
 linkStrList = ''
-with open('BerkStanf_4096_8192.txt','r') as f:
+url = 'BerkStanf_4096_8192.txt'
+with open(url,'r') as f:
     tmp = f.read()
     tmp_ = tmp.replace('\n',' ')
     tmp__ = tmp_.split(' ')
@@ -16,7 +17,7 @@ def genNodes():
         nodeStrList = nodeStrList + ',' + nodeStr
     return nodeStrList
 nodeStrList = genNodes().lstrip(',')
-with open('BerkStanf_4096_8192.txt','r') as f:
+with open(url,'r') as f:
     tmp = f.readlines()
     for i in tmp:
         i = i.replace('\n','')
@@ -25,6 +26,6 @@ with open('BerkStanf_4096_8192.txt','r') as f:
 linkStrList = linkStrList.lstrip(',')
 jsonStrFile = ''
 jsonStrFile = '{\"nodes\":[' + nodeStrList + '],\"links\":[' + linkStrList + ']}'
-with open('graphFile.json','w') as f:
+with open(url+'graphFile.json','w') as f:
     f.write(jsonStrFile)
 print(tmp__)
